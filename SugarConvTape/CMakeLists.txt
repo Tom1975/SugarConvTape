@@ -42,10 +42,12 @@ if(CMAKE_COMPILER_IS_GNUCC)
 	set ( CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} --std=c++1z )
 endif()
 
+MESSAGE ("ZLIB_LIBRARY : ${ZLIB_LIBRARY}")
+
 if(MSVC)
 	target_link_libraries ( SugarConvTape zlibstatic CPCCoreEmu)
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /std:c++17")  
 	ADD_DEFINITIONS(/arch:SSE2)
 else ()
-	target_link_libraries ( SugarConvTape  m stdc++fs zlibstatic CPCCoreEmu)
+	target_link_libraries ( SugarConvTape  m stdc++fs CPCCoreEmu zlib)
 endif()
