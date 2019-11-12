@@ -11,9 +11,7 @@ set(HEADERS
 
 add_definitions( -D_CONSOLE)
 add_executable(SugarConvTape ${SRCS} ${HEADERS})
-include_directories(${CMAKE_CURRENT_LIST_DIR}/../CPCCore/CPCCoreEmu ${CMAKE_CURRENT_BINARY_DIR}/../zlib)
-
-target_include_directories( SugarConvTape PUBLIC ${CMAKE_CURRENT_LIST_DIR}/../CPCCore ${CMAKE_CURRENT_LIST_DIR}/../zlib)
+include_directories(${CMAKE_CURRENT_LIST_DIR}/../CPCCore/CPCCoreEmu)
 
 set(CompilerFlags
         CMAKE_CXX_FLAGS
@@ -49,5 +47,5 @@ if(MSVC)
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /std:c++17")  
 	ADD_DEFINITIONS(/arch:SSE2)
 else ()
-	target_link_libraries ( SugarConvTape  m stdc++fs libz.a CPCCoreEmu)
+	target_link_libraries ( SugarConvTape  m stdc++fs zlibstatic CPCCoreEmu)
 endif()
