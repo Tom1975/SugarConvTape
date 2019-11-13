@@ -1,13 +1,9 @@
 version: '{build}'
 
-environment:
-  ZLIB_VERSION: 1.2.8.4
-  
 branches:
   only:
   - master
  
-
 image:
 - Visual Studio 2017
 - Ubuntu1804
@@ -20,8 +16,8 @@ platform:
 - x64
 
 install:
+- git submodule update --init --recursive
 - git submodule init 
-- git submodule update
 - sh: |- 
     echo 'Update to gcc8'
     sudo update-alternatives --set gcc /usr/bin/gcc-8
@@ -45,7 +41,6 @@ before_build:
 build_script:
 - cmd : |- 
     cmake --build . --config %configuration%
-    cmake --build . --config %configuration% --target INSTALL
 - sh: |-
     make all
 
@@ -60,23 +55,14 @@ after_build:
     mv $APPVEYOR_BUILD_FOLDER/build/SugarConvTape/$configuration/SugarConvTape.gz $artifact_name
     appveyor PushArtifact $artifact_name
 
-test_script:
-- cmd:  |-
-    cd c:\projects\SugarConvTape\build\Tests
-    cd %configuration%
-    Tests.exe
-- sh:  |-
-    cd $APPVEYOR_BUILD_FOLDER/build/Tests
-    make install
-    chmod +777 SugarConvTape
-    ./Tests
 
 only_commits:
   files:
     - CMakeLists.txt
     - appveyor.yml
     - SugarConvTape/
-    - CPCCoreEMu/
+    - CPCCore/CPCCoreEmu/
+    - CPCCore/zlib
 
 deploy:
   release: SugarConvTape-v1.0.$(appveyor_build_version)
