@@ -9,6 +9,16 @@ set(SRCS
 set(HEADERS
 	)
 
+
+set(GITHUB_FILES
+   ../.travis.yml
+   ../appveyor.yml
+   ../LICENSE
+   ../README.md
+   )
+   
+source_group("Github" FILES ${GITHUB_FILES} )
+
 add_definitions( -D_CONSOLE)
 add_executable(SugarConvTape ${SRCS} ${HEADERS})
 include_directories(${CMAKE_CURRENT_LIST_DIR}/../CPCCore/CPCCoreEmu)

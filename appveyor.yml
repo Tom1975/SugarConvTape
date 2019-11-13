@@ -61,16 +61,6 @@ after_build:
     mv $APPVEYOR_BUILD_FOLDER/build/SugarConvTape/$configuration/SugarConvTape.gz $artifact_name
     appveyor PushArtifact $artifact_name
 
-test_script:
-- cmd:  |-
-    cd c:\projects\SugarConvTape\build\Tests
-    cd %configuration%
-    Tests.exe
-- sh:  |-
-    cd $APPVEYOR_BUILD_FOLDER/build/Tests
-    make install
-    chmod +777 SugarConvTape
-    ./Tests
 
 only_commits:
   files:
