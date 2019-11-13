@@ -42,7 +42,6 @@ before_build:
 build_script:
 - cmd : |- 
     cmake --build . --config %configuration%
-    cmake --build . --config %configuration% --target INSTALL
 - sh: |-
     make all
 
