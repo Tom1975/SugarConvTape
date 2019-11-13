@@ -62,7 +62,8 @@ only_commits:
     - CMakeLists.txt
     - appveyor.yml
     - SugarConvTape/
-    - CPCCore/
+    - CPCCore/CPCCoreEmu/
+    - CPCCore/zlib
 
 deploy:
   release: SugarConvTape-v1.0.$(appveyor_build_version)
