@@ -6,6 +6,7 @@ environment:
 branches:
   only:
   - master
+  - Build_appveyor
  
 
 image:
