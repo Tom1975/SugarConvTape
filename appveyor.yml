@@ -3,7 +3,6 @@ version: '{build}'
 branches:
   only:
   - master
-  - Build_appveyor
  
 image:
 - Visual Studio 2017
