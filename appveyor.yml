@@ -1,14 +1,10 @@
 version: '{build}'
 
-environment:
-  ZLIB_VERSION: 1.2.8.4
-  
 branches:
   only:
   - master
   - Build_appveyor
  
-
 image:
 - Visual Studio 2017
 - Ubuntu1804
@@ -67,7 +63,7 @@ only_commits:
     - CMakeLists.txt
     - appveyor.yml
     - SugarConvTape/
-    - CPCCoreEMu/
+    - CPCCore/
 
 deploy:
   release: SugarConvTape-v1.0.$(appveyor_build_version)
